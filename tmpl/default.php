@@ -10,28 +10,41 @@
 
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.modal', 'a.flyermodal');
+$moduleName = $module->module;
+
+$mediaUrl = 'media/' . $moduleName;
+if (file_exists($mediaUrl . '/css/drawer.css') && (filesize($mediaUrl . '/css/drawer.css') > 0))
+{
+	$document = JFactory::getDocument();
+	$document->addStyleSheet($mediaUrl . '/css/drawer.css', array('version' => 'auto'));
+}
+
+if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl . '/js/vanilla-js-drawer.js') > 0))
+{
+	$document = JFactory::getDocument();
+	$document->addScript($mediaUrl . "/js/vanilla-js-drawer.js", "text/javascript", true, false, array('version' => 'auto'));
+}
 ?>
 
-
-<!-- open and close button
-
-<a class="ui-btn ui-menu-close">Close <i class="fa fa-close" aria-label="Close dialog"></i></a>
-
-CSS is already done
-
--->
 
 <div class="jemmodulejoomla_london<?php echo $params->get('moduleclass_sfx')?>" id="jemmodule_joomla_london">
 
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
+
+			<?php 
+				echo "<pre>";
+				print_r($item);
+				echo "</pre>";
+			?>
+
+
 			<div class="<?php echo $item->module; ?>">
 				<div class="jem-initial-details">
 					<div class="jem-event-image">
 						<!-- IMAGE or Attractive looking "this month you are going to get value because X".  e.g. speaker. topic.  etc. -->
 						<a href="<?php echo $item->eventlink; ?>">
-							<img src="<?php  echo $item->eventimage; ?>" alt="<?php echo $item->eventtitle; ?>">
+							<img src="<?php  echo $item->eventimageorig; ?>" alt="<?php echo $item->title; ?>">
 						</a>
 					</div>
 					<div class="jem-event-countdown">
@@ -41,17 +54,22 @@ CSS is already done
 						<?php  echo $item->dateinfo; ?>
 					</div>
 					<div class="jem-date">
-						<a href="/registration-form/view/form" class="button">Register to Attend</a> 
+						<a class="button ui-btn ui-menu-open">Register to Attend</a> 
 						<a href="/find-joomla-london" target="_blank" class="button">Get Directions</a> 
 						<a href="<?php echo $item->eventlink; ?>" class="button">More Information</a>
 					</div>		
 				</div>
-				<div class="jem-popout">
-					<div class="jem-registration-form">
-						<?php $document->loadRenderer('modules')->render("JemRegistrationForm"); ?>
-					</div>
-					<div class="jem-more-information">
-						<?php  echo $item->eventdescription; ?>
+				<div class="ui-nav ui-nav-mobile">
+					<div class="g-content">
+					<a class="ui-btn ui-menu-close">Close <i class="fa fa-close" aria-label="Close dialog"></i></a>  				
+						<div class="jem-popout">
+							<div class="jem-registration-form">
+								<?php $document->loadRenderer('modules')->render("JemRegistrationForm"); ?>
+							</div>
+							<div class="jem-more-information">
+								<?php  echo $item->eventdescription; ?>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>		
