@@ -12,16 +12,17 @@ defined('_JEXEC') or die;
 
 $moduleName = $module->module;
 
+$document   = JFactory::getDocument();
+
+
 $mediaUrl = 'media/' . $moduleName;
 if (file_exists($mediaUrl . '/css/drawer.css') && (filesize($mediaUrl . '/css/drawer.css') > 0))
 {
-	$document = JFactory::getDocument();
 	$document->addStyleSheet($mediaUrl . '/css/drawer.css', array('version' => 'auto'));
 }
 
 if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl . '/js/vanilla-js-drawer.js') > 0))
 {
-	$document = JFactory::getDocument();
 	$document->addScript($mediaUrl . "/js/vanilla-js-drawer.js", "text/javascript", true, false, array('version' => 'auto'));
 }
 ?>
@@ -31,13 +32,6 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
-
-			<?php 
-				// echo "<pre>";
-				// print_r($item);
-				// echo "</pre>";
-			?>
-
 
 			<div class="<?php echo $moduleName; ?>--outerDiv">
 				<div class="jem-initial-details">
@@ -65,11 +59,6 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 							<div class="jem-registration-form">
 								<?php $document->loadRenderer('modules')->render("JemRegistrationForm"); ?>
 							</div>
-							<!--
-							<div class="jem-more-information">
-								<?php  // echo $item->eventdescription; ?>
-							</div>
-							-->
 						</div>
 					</div>
 				</div>
