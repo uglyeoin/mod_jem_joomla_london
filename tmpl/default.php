@@ -65,9 +65,11 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 							<div class="jem-registration-form">
 								<?php $document->loadRenderer('modules')->render("JemRegistrationForm"); ?>
 							</div>
+							<!--
 							<div class="jem-more-information">
-								<?php  echo $item->eventdescription; ?>
+								<?php  // echo $item->eventdescription; ?>
 							</div>
+							-->
 						</div>
 					</div>
 				</div>
