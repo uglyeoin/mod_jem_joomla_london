@@ -27,19 +27,19 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 ?>
 
 
-<div class="jemmodulejoomla_london<?php echo $params->get('moduleclass_sfx')?>" id="jemmodule_joomla_london">
+<div class="<?php echo$moduleName; ?> <?php echo $params->get('moduleclass_sfx')?>" id="<?php echo$moduleName; ?>">
 
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
 
 			<?php 
-				echo "<pre>";
-				print_r($item);
-				echo "</pre>";
+				// echo "<pre>";
+				// print_r($item);
+				// echo "</pre>";
 			?>
 
 
-			<div class="<?php echo $item->module; ?>">
+			<div class="<?php echo $moduleName; ?>--outerDiv">
 				<div class="jem-initial-details">
 					<div class="jem-event-image">
 						<!-- IMAGE or Attractive looking "this month you are going to get value because X".  e.g. speaker. topic.  etc. -->
@@ -56,10 +56,9 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 					<div class="jem-date">
 						<a class="button ui-btn ui-menu-open">Register to Attend</a> 
 						<a href="/find-joomla-london" target="_blank" class="button">Get Directions</a> 
-						<a href="<?php echo $item->eventlink; ?>" class="button">More Information</a>
 					</div>		
 				</div>
-				<div class="ui-nav ui-nav-mobile">
+				<div class="ui-nav ui-nav-mobile more-information">
 					<div class="g-content">
 					<a class="ui-btn ui-menu-close">Close <i class="fa fa-close" aria-label="Close dialog"></i></a>  				
 						<div class="jem-popout">
