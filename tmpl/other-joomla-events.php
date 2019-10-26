@@ -24,10 +24,10 @@ $moduleName = $module->module;
 						<!-- IMAGE or Attractive looking "this month you are going to get value because X".  e.g. speaker. topic.  etc. -->
 						<a href="<?php echo $item->eventlink; ?>">
 							<img src="<?php  echo $item->eventimageorig; ?>" alt="<?php echo $item->fulltitle; ?>">
-							<div class="image-title">
-								<?php echo $item->fulltitle; ?>
-							</div>
 						</a>
+					</div>
+					<div class="jem-title">
+						<?php echo $item->fulltitle; ?>
 					</div>
 					<div class="jem-date">
 						<?php echo date('l jS F', strtotime($item->date)); ?>, 
