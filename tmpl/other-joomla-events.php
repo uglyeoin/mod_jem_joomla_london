@@ -32,10 +32,10 @@ $moduleName = $module->module;
 						</h3>
 					</div>
 					<div class="jem-date">
-						<?php echo date('l jS F', strtotime($item->date)); ?>, 
+						<?php echo $item->date; ?>, 
 						<span class="jem-time">
 							<?php 
-								echo date('h:ia', strtotime($item->time));
+								echo $item->time;
 							?>
 						</span>										
 					</div>
