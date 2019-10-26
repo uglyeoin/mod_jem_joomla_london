@@ -10,21 +10,12 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+
 $moduleName = $module->module;
 
-$document   = JFactory::getDocument();
+$document = Factory::getApplication()->getDocument();
 
-
-$mediaUrl = 'media/' . $moduleName;
-if (file_exists($mediaUrl . '/css/drawer.css') && (filesize($mediaUrl . '/css/drawer.css') > 0))
-{
-	$document->addStyleSheet($mediaUrl . '/css/drawer.css', array('version' => 'auto'));
-}
-
-if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl . '/js/vanilla-js-drawer.js') > 0))
-{
-	$document->addScript($mediaUrl . "/js/vanilla-js-drawer.js", "text/javascript", true, false, array('version' => 'auto'));
-}
 ?>
 
 
@@ -33,31 +24,47 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
 
+
 			<div class="<?php echo $moduleName; ?>--outerDiv">
 				<div class="jem-initial-details">
+					<p><?php echo JText::_("OUR_NEXT_MEETING_IS");?></p>
+					<div class="countdown-timer">
+						<?php 
+							$position = "jem-countdown-timer";
+							echo Factory::getApplication()->getDocument()->loadRenderer('modules')->render($position); 
+						?>
+					</div>
 					<div class="jem-event-image">
 						<!-- IMAGE or Attractive looking "this month you are going to get value because X".  e.g. speaker. topic.  etc. -->
 						<a href="<?php echo $item->eventlink; ?>">
-							<img src="<?php  echo $item->eventimageorig; ?>" alt="<?php echo $item->title; ?>">
+							<img src="<?php  echo $item->eventimageorig; ?>" alt="<?php echo $item->fulltitle; ?>">
+							<div class="image-title">
+								<?php echo $item->fulltitle; ?>
+							</div>
 						</a>
 					</div>
-					<div class="jem-event-countdown">
-						<?php $document->loadRenderer('modules')->render("JemCountdownTimer"); ?>
-					</div>		
 					<div class="jem-date">
-						<?php  echo $item->dateinfo; ?>
+						<?php echo date('l jS F', strtotime($item->date)); ?>, 
+						<span class="jem-time">
+							<?php 
+								echo date('h:ia', strtotime($item->time));
+							?>
+						</span>										
 					</div>
-					<div class="jem-date">
-						<a class="button ui-btn ui-menu-open">Register to Attend</a> 
-						<a href="/find-joomla-london" target="_blank" class="button">Get Directions</a> 
+					<div class="jem-buttons bg-yellow">
+						<a class="button ui-btn ui-menu-open red">Register to Attend</a> 
+						<a href="/find-joomla-london" target="_blank" class="button yellow">Get Directions</a> 
 					</div>		
 				</div>
 				<div class="ui-nav ui-nav-mobile more-information">
 					<div class="g-content">
-					<a class="ui-btn ui-menu-close">Close <i class="fa fa-close" aria-label="Close dialog"></i></a>  				
+					<a class="ui-btn ui-menu-close button">Close <i class="fa fa-close" aria-label="Close dialog"></i></a>  				
 						<div class="jem-popout">
 							<div class="jem-registration-form">
-								<?php $document->loadRenderer('modules')->render("JemRegistrationForm"); ?>
+								<?php 
+									$position = "jem-registration-form";
+									echo Factory::getApplication()->getDocument()->loadRenderer('modules')->render($position); 
+								?>	
 							</div>
 						</div>
 					</div>
@@ -69,3 +76,16 @@ if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl .
 	<?php echo JText::_('MOD_JEM_WIDE_NO_EVENTS'); ?>
 <?php endif; ?>
 </div>
+
+<?php
+	$mediaUrl = 'media/' . $moduleName;
+	if (file_exists($mediaUrl . '/css/drawer.css') && (filesize($mediaUrl . '/css/drawer.css') > 0))
+	{
+		$document->addStyleSheet($mediaUrl . '/css/drawer.css', array('version' => 'auto'));
+	}
+
+	if (file_exists($mediaUrl . '/js/vanilla-js-drawer.js') && (filesize($mediaUrl . '/js/vanilla-js-drawer.js') > 0))
+	{
+		$document->addScript($mediaUrl . "/js/vanilla-js-drawer.js", "text/javascript", true, false, array('version' => 'auto'));
+	}
+?>

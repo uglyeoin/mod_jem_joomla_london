@@ -3,6 +3,7 @@
  }
 a.ui-btn.ui-menu-close {
 	position: relative;
+	padding: 0.25rem 0.25rem 0.25rem 0;
 }
  .ui-menu-open::after {
 	 background: rgba(0, 0, 0, 0.2);
@@ -42,8 +43,16 @@ a.ui-btn.ui-menu-close {
  .ui-nav-mobile.is-active {
 	 animation: slidein-right 0.3s ease-in-out;
 	 display: flex;
-	 left: 110%;
+	 left: 0;
+	 background: rgba(255, 255, 255, 0.98);
 }
+
+/*
+.is-active .g-content {
+	padding: 0;
+	margin: 0;
+}
+*/
  
 
 @media only screen
@@ -67,4 +76,14 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .mod_koy_sticky_contact {
         padding-bottom: 0;
     }
+}
+
+@media only all and (min-width: 59.938rem) {
+	.ui-nav-mobile.is-active {
+		left: 110%;
+	}
+	.is-active .g-content {
+		margin: 0.625rem;
+		padding: 0.938rem;
+	}
 }
