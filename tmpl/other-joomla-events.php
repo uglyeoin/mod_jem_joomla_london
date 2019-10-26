@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 $moduleName = $module->module;
 ?>
 
-<div class="<?php echo$moduleName; ?> <?php echo $params->get('moduleclass_sfx')?>" id="<?php echo$moduleName; ?>">
+<div class="<?php echo$moduleName; ?> <?php echo $params->get('moduleclass_sfx')?> other-joomla-events" id="<?php echo$moduleName; ?>">
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
 
