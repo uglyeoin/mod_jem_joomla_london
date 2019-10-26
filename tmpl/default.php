@@ -24,7 +24,6 @@ $document = Factory::getApplication()->getDocument();
 <?php if (count($list)) : ?>
 		<?php foreach ($list as $item) : ?>
 
-
 			<div class="<?php echo $moduleName; ?>--outerDiv">
 				<div class="jem-initial-details">
 					<p><?php echo JText::_("OUR_NEXT_MEETING_IS");?></p>
@@ -39,21 +38,23 @@ $document = Factory::getApplication()->getDocument();
 						<a href="<?php echo $item->eventlink; ?>">
 							<img src="<?php  echo $item->eventimageorig; ?>" alt="<?php echo $item->fulltitle; ?>">
 							<div class="image-title">
-								<?php echo $item->fulltitle; ?>
+								<h2>
+									<?php echo $item->fulltitle; ?>
+								</h2>
 							</div>
 						</a>
 					</div>
 					<div class="jem-date">
-						<?php echo date('l jS F', strtotime($item->date)); ?>, 
+						<?php echo $item->date; ?>, 
 						<span class="jem-time">
 							<?php 
-								echo date('h:ia', strtotime($item->time));
+								echo $item->time;
 							?>
 						</span>										
 					</div>
 					<div class="jem-buttons bg-yellow">
-						<a class="button ui-btn ui-menu-open red">Register to Attend</a> 
-						<a href="/find-joomla-london" target="_blank" class="button yellow">Get Directions</a> 
+						<a class="button ui-btn ui-menu-open red"><?php echo JText::_("REGISTER_TO_ATTEND");?></a> 
+						<a href="/find-joomla-london" target="_blank" class="button yellow"><?php echo JText::_("GET_DIRECTIONS");?></a> 
 					</div>		
 				</div>
 				<div class="ui-nav ui-nav-mobile more-information">

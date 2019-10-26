@@ -27,7 +27,9 @@ $moduleName = $module->module;
 						</a>
 					</div>
 					<div class="jem-title">
-						<?php echo $item->fulltitle; ?>
+						<h3>
+							<?php echo $item->fulltitle; ?>
+						</h3>
 					</div>
 					<div class="jem-date">
 						<?php echo date('l jS F', strtotime($item->date)); ?>, 
@@ -37,9 +39,8 @@ $moduleName = $module->module;
 							?>
 						</span>										
 					</div>
-					<div class="jem-buttons bg-yellow">
-						<a class="button">Register to Attend</a> 
-						<a href="<?php echo $item->eventlink; ?>" target="_blank" class="button yellow">Get Directions</a> 
+					<div class="jem-buttons bg-green">
+						<a href="<?php echo $item->eventlink; ?>" target="_blank" class="button">More Info</a> 
 					</div>		
 				</div>
 			</div>		

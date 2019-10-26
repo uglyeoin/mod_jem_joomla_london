@@ -10,6 +10,9 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Helper\ModuleHelper;
+
+
 // get module helper
 require_once(dirname(__FILE__).'/helper.php');
 
@@ -32,4 +35,4 @@ if (empty($list) && !$params->get('show_no_events')) {
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::base(true).'/modules/mod_jem_joomla_london/tmpl/mod_jem_joomla_london.css');
 
-require(JModuleHelper::getLayoutPath('mod_jem_joomla_london'));
+require ModuleHelper::getLayoutPath('mod_jem_joomla_london', $params->get('layout', 'default'));

@@ -3,7 +3,6 @@
  }
 a.ui-btn.ui-menu-close {
 	position: relative;
-	padding: 0.25rem 0.25rem 0.25rem 0;
 }
  .ui-menu-open::after {
 	 background: rgba(0, 0, 0, 0.2);
@@ -44,7 +43,6 @@ a.ui-btn.ui-menu-close {
 	 animation: slidein-right 0.3s ease-in-out;
 	 display: flex;
 	 left: 0;
-	 background: rgba(255, 255, 255, 0.98);
 }
 
 /*
